@@ -1,148 +1,67 @@
 import React from 'react';
 
-export default function Dashboard() {
+export default function Home() {
   return (
-    <div className="flex min-h-screen bg-slate-50 text-slate-900" dir="rtl">
-      {/* Sidebar */}
-      <aside className="w-64 bg-slate-900 text-white flex flex-col fixed inset-y-0 right-0 z-50">
-        <div className="p-6 text-2xl font-bold text-sky-400 border-b border-slate-800 text-center">
-          Pulsetrips B2B
+    <div style={{ fontFamily: 'Segoe UI, sans-serif', direction: 'ltr', backgroundColor: '#f8fafc', minHeight: '100vh', margin: 0, padding: 0 }}>
+      {/* Top Bar */}
+      <div style={{ backgroundColor: '#0f172a', color: '#fff', padding: '15px 30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2 style={{ margin: 0, color: '#38bdf8' }}>Pulsetrips B2B Portal</h2>
+        <div>
+          <span style={{ backgroundColor: '#0369a1', padding: '6px 15px', borderRadius: '20px', fontSize: '14px', fontWeight: 'bold' }}>
+            Wallet Balance: $5,240.00
+          </span>
         </div>
-        <nav className="flex-1 p-4 space-y-2">
-          <a href="#" className="flex items-center p-3 text-sky-400 bg-slate-800 rounded-lg font-medium">
-            ڈیش بورڈ (Dashboard)
-          </a>
-          <a href="#" className="flex items-center p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg">
-            فلائٹس (Flights)
-          </a>
-          <a href="#" className="flex items-center p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg">
-            ہوٹلز (Hotels)
-          </a>
-          <a href="#" className="flex items-center p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg">
-            ٹرانسفرز (Transfers)
-          </a>
-          <a href="#" className="flex items-center p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg">
-            ای سم (eSIM Data)
-          </a>
-          <a href="#" className="flex items-center justify-between p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg">
-            <span>وائٹ لیبل / ایفیلی ایٹ</span>
-            <span className="bg-amber-500 text-black text-xs font-bold px-2 py-0.5 rounded">NEW</span>
-          </a>
-          <a href="#" className="flex items-center p-3 text-slate-400 hover:bg-slate-800 hover:text-white rounded-lg">
-            مارک اپ سیٹنگز (Markup)
-          </a>
-        </nav>
-      </aside>
-
-      {/* Main Content Area */}
-      <div className="mr-64 flex-1 flex flex-col min-h-screen">
-        {/* Top Header */}
-        <header className="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center">
-          <h2 className="text-xl font-bold text-slate-800">B2B ایجنٹ پورٹل</h2>
-          <div className="flex items-center gap-4">
-            <span className="bg-sky-100 text-sky-800 font-bold px-4 py-2 rounded-full text-sm">
-              Net Balance: $5,240.00
-            </span>
-            <span className="text-sm">ایجنسی: <strong>Pulsetrips Partner</strong></span>
-          </div>
-        </header>
-
-        {/* Hero Banner */}
-        <section className="bg-gradient-to-r from-blue-700 to-indigo-900 text-white py-12 px-8 text-center">
-          <h1 className="text-3xl font-extrabold mb-3">آپ کا مکمل B2B ٹریول ہب</h1>
-          <p className="text-slate-300 max-w-2xl mx-auto text-sm">
-            فلائٹس، ہوٹلز، ٹرانسفرز اور eSIM کے ہول سیل ریٹس پر اپلائی کریں اپنا مارک اپ اور حاصل کریں مکمل کنٹرول۔
-          </p>
-        </section>
-
-        {/* Search Widget Container */}
-        <main className="p-8 flex-1">
-          <div className="bg-white rounded-xl p-6 shadow-md -mt-12 mb-8 border border-slate-100">
-            <div className="flex gap-4 border-b border-slate-100 pb-4 mb-6">
-              <button className="bg-blue-50 text-blue-700 font-bold px-4 py-2 rounded-lg">✈️ فلائٹ سرچ</button>
-              <button className="text-slate-500 font-medium px-4 py-2 hover:bg-slate-50 rounded-lg">🏨 ہوٹل سرچ</button>
-              <button className="text-slate-500 font-medium px-4 py-2 hover:bg-slate-50 rounded-lg">🚗 ٹرانسفرز</button>
-              <button className="text-slate-500 font-medium px-4 py-2 hover:bg-slate-50 rounded-lg">📱 eSIM ڈیٹا</button>
-            </div>
-            <div className="flex gap-4">
-              <input type="text" placeholder="کہاں سے (From)" className="flex-1 p-3 border border-slate-300 rounded-lg text-sm" />
-              <input type="text" placeholder="کہاں تک (To)" className="flex-1 p-3 border border-slate-300 rounded-lg text-sm" />
-              <button className="bg-blue-700 text-white font-bold px-8 py-3 rounded-lg hover:bg-blue-800">
-                تلاش کریں
-              </button>
-            </div>
-          </div>
-
-          {/* Cards Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <h3 className="font-bold text-lg mb-2 flex justify-between">
-                <span>مارک اپ مینجمنٹ</span>
-                <span>⚙️</span>
-              </h3>
-              <p className="text-slate-500 text-xs mb-4">اپنا گلوبل نفع (Profit Margin) سیٹ کریں۔</p>
-              <span className="text-2xl font-bold text-blue-700">+ 5.0% Net Rate</span>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <h3 className="font-bold text-lg mb-2 flex justify-between">
-                <span>White Label / Affiliate</span>
-                <span>🌐</span>
-              </h3>
-              <p className="text-slate-500 text-xs mb-4">اپنی ڈومین پر ہماری APIs استعمال کریں۔</p>
-              <span className="text-green-600 font-bold text-sm">Status: Active Key</span>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <h3 className="font-bold text-lg mb-2 flex justify-between">
-                <span>کل ماہانہ سیلز</span>
-                <span>📊</span>
-              </h3>
-              <p className="text-slate-500 text-xs mb-4">جاری ماہ کی مکمل بکنگز</p>
-              <span className="text-2xl font-bold text-amber-600">$12,850.00</span>
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-slate-900 text-slate-400 p-8 text-sm mt-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="text-white font-bold mb-4">Pulsetrips B2B</h4>
-              <p className="text-xs leading-relaxed">دنیا بھر کے ایجنٹس اور بی ٹو بی پارٹنرز کے لیے مکمل سفری پورٹل۔</p>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">خدمات (Services)</h4>
-              <ul className="space-y-2 text-xs">
-                <li><a href="#" className="hover:text-white">B2B Flight Booking</a></li>
-                <li><a href="#" className="hover:text-white">Wholesale Hotel Rates</a></li>
-                <li><a href="#" className="hover:text-white">Airport Transfers</a></li>
-                <li><a href="#" className="hover:text-white">Global eSIM Packs</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">پالیسیز (Policies)</h4>
-              <ul className="space-y-2 text-xs">
-                <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white">Terms & Conditions</a></li>
-                <li><a href="#" className="hover:text-white">Refund & Cancellation</a></li>
-                <li><a href="#" className="hover:text-white">Agency SLA Agreement</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">پارٹنرشپ</h4>
-              <ul className="space-y-2 text-xs">
-                <li><a href="#" className="hover:text-white">Affiliate Program</a></li>
-                <li><a href="#" className="hover:text-white">White Label Setup</a></li>
-                <li><a href="#" className="hover:text-white">API Documentation</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-slate-800 pt-4 text-center text-xs">
-            © 2026 Pulsetrips.com — All Rights Reserved.
-          </div>
-        </footer>
       </div>
+
+      {/* Hero Banner */}
+      <div style={{ background: 'linear-gradient(135deg, #1e40af 0%, #312e81 100%)', color: '#fff', padding: '40px 20px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>B2B Travel Management Hub</h1>
+        <p style={{ color: '#cbd5e1', fontSize: '16px' }}>Access net rates for Flights, Hotels, Transfers, and eSIMs with customized markups.</p>
+      </div>
+
+      {/* Main Container */}
+      <div style={{ maxWidth: '1100px', margin: '-30px auto 40px', padding: '0 20px' }}>
+        {/* Search Widget */}
+        <div style={{ backgroundColor: '#fff', borderRadius: '12px', padding: '25px', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', borderBottom: '2px solid #f1f5f9', paddingBottom: '10px' }}>
+            <button style={{ padding: '10px 20px', backgroundColor: '#eff6ff', color: '#1e40af', border: 'none', borderRadius: '6px', fontWeight: 'bold' }}>✈️ Flights</button>
+            <button style={{ padding: '10px 20px', backgroundColor: 'transparent', color: '#64748b', border: 'none', fontWeight: 'bold' }}>🏨 Hotels</button>
+            <button style={{ padding: '10px 20px', backgroundColor: 'transparent', color: '#64748b', border: 'none', fontWeight: 'bold' }}>🚗 Transfers</button>
+            <button style={{ padding: '10px 20px', backgroundColor: 'transparent', color: '#64748b', border: 'none', fontWeight: 'bold' }}>📱 eSIM Data</button>
+          </div>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <input type="text" placeholder="From (City/Airport)" style={{ flex: 1, padding: '12px', border: '1px solid #cbd5e1', borderRadius: '6px' }} />
+            <input type="text" placeholder="To (City/Airport)" style={{ flex: 1, padding: '12px', border: '1px solid #cbd5e1', borderRadius: '6px' }} />
+            <button style={{ backgroundColor: '#1e40af', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}>Search</button>
+          </div>
+        </div>
+
+        {/* Feature Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginTop: '30px' }}>
+          <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+            <h3 style={{ margin: '0 0 10px 0' }}>Markup Settings ⚙️</h3>
+            <p style={{ color: '#64748b', fontSize: '13px' }}>Global Profit Margin</p>
+            <span style={{ fontSize: '22px', fontWeight: 'bold', color: '#1e40af' }}>+ 5.0% Net Rate</span>
+          </div>
+
+          <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+            <h3 style={{ margin: '0 0 10px 0' }}>White Label / Affiliate 🌐</h3>
+            <p style={{ color: '#64748b', fontSize: '13px' }}>Custom Domain & APIs</p>
+            <span style={{ color: '#16a34a', fontWeight: 'bold' }}>Status: Active API Keys</span>
+          </div>
+
+          <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+            <h3 style={{ margin: '0 0 10px 0' }}>Monthly Sales 📊</h3>
+            <p style={{ color: '#64748b', fontSize: '13px' }}>Current Month Bookings</p>
+            <span style={{ fontSize: '22px', fontWeight: 'bold', color: '#d97706' }}>$12,850.00</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer style={{ backgroundColor: '#0f172a', color: '#94a3b8', padding: '30px 20px', textAlign: 'center', fontSize: '14px', marginTop: 'auto' }}>
+        <p>&copy; 2026 Pulsetrips.com — B2B Travel Management Portal. All Rights Reserved.</p>
+      </footer>
     </div>
   );
 }
