@@ -1,7 +1,7 @@
-mport Header from '@/components/Header';
+import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 
-export default function Home() { 
+export default function Home() {
   return (
     <div className="min-h-screen bg-[#070d1d] text-white flex flex-col">
       {/* Top Bar Component */}
@@ -12,7 +12,7 @@ export default function Home() {
         {/* Sidebar Component */}
         <Sidebar />
 
-        {/* Main Content Area (Purana Web Data / Dashboard Content) */}
+        {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto p-6 bg-[#091022]">
           <div className="max-w-7xl mx-auto flex flex-col gap-6">
            
@@ -51,7 +51,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Trending Global Destinations Grid (Purana Web Data sorted out) */}
+            {/* Trending Global Destinations Grid */}
             <div>
               <h3 className="text-lg font-bold mb-3 text-white">Trending Global Destinations</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
