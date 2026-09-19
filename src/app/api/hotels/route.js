@@ -13,7 +13,7 @@ export async function GET(request) {
     const checkOut = searchParams.get('checkOut') || '2026-10-10';
 
     /*
-    // Uncomment and integrate your Hotelbeds live fetch code here when ready
+    // 3309edbb6a745e0c4b827ce23682097a
     */
 
     // Sample response to verify server-side hotel route connectivity
