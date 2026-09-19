@@ -1,259 +1,292 @@
 'use client';
-
 import { useState } from 'react';
 
-export default function AetrosPortal() {
-  const [activeTab, setActiveTab] = useState('flights');
-  const [from, setFrom] = useState('LHE');
-  const [to, setTo] = useState('DXB');
-  const [withdrawAmount, setWithdrawAmount] = useState('');
-  const [withdrawSuccess, setWithdrawSuccess] = useState(false);
-
-  const handleWithdraw = (e) => {
-    e.preventDefault();
-    if (withdrawAmount) {
-      setWithdrawSuccess(true);
-      setWithdrawAmount('');
-      setTimeout(() => setWithdrawSuccess(false), 4000);
-    }
-  };
+export default function Home() {
+  const [selectedRegion, setSelectedRegion] = useState('Asia');
+  const [selectedCountry, setSelectedCountry] = useState('UAE');
+  const [selectedCity, setSelectedCity] = useState('Dubai');
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
      
-      {/* Top Banner & Monogram */}
-      <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      {/* 1. TOPBAR WITH MONOGRAM & LINKS */}
+      <header className="border-b border-slate-800 bg-slate-900/80 sticky top-0 z-50 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+         
+          {/* Monogram / Brand */}
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center font-black text-white text-2xl shadow-lg shadow-cyan-500/30">
-              A
+            <div className="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-xl flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-500/30">
+              AP
             </div>
             <div>
-              <span className="text-xl font-black tracking-wider text-white">AETROS</span>
-              <span className="block text-[10px] text-cyan-400 font-bold uppercase tracking-widest">PulseTrips B2B</span>
+              <span className="text-xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">
+                AETROS PULSETRIPS
+              </span>
+              <span className="block text-xs text-slate-400">B2B Direct Wholesale Portal</span>
             </div>
           </div>
-          <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-            <a href="#search" className="hover:text-cyan-400 transition">Flight & Hotels</a>
-            <a href="#affiliate" className="hover:text-cyan-400 transition">White-label & API</a>
-            <a href="#wallet" className="hover:text-cyan-400 transition">Agent Wallet & Withdraw</a>
-          </div>
-          <div>
-            <span className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold px-4 py-2 rounded-xl">
-              Partner Portal Active
-            </span>
-          </div>
-        </div>
 
-        {/* API Links Sub-Bar */}
-        <div className="bg-slate-900/90 border-t border-slate-800/60 py-2.5 px-6">
-          <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto space-x-6 text-xs text-slate-400">
-            <span className="font-bold text-slate-200 uppercase tracking-wider flex-shrink-0">API & Affiliates Hub:</span>
-            <div className="flex space-x-6 whitespace-nowrap">
-              <span className="hover:text-cyan-400 transition flex items-center space-x-1 cursor-pointer"><span>✈️</span> <span>Duffel Flights API</span></span>
-              <span className="hover:text-cyan-400 transition flex items-center space-x-1 cursor-pointer"><span>🏨</span> <span>Stay22 Hotels API</span></span>
-              <span className="hover:text-cyan-400 transition flex items-center space-x-1 cursor-pointer"><span>🔗</span> <span>Travelpayouts Network</span></span>
-              <span className="hover:text-cyan-400 transition flex items-center space-x-1 cursor-pointer"><span>💼</span> <span>White-label Solution</span></span>
-            </div>
+          {/* Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-300">
+            <a href="#" className="hover:text-blue-400 transition">Home</a>
+            <a href="#" className="hover:text-blue-400 transition">Flights</a>
+            <a href="#" className="hover:text-blue-400 transition">Stays</a>
+            <a href="#" className="hover:text-blue-400 transition">Hotels</a>
+            <a href="#" className="hover:text-blue-400 transition">Airport Taxi</a>
+            <a href="#" className="hover:text-blue-400 transition">Car Rental</a>
+            <a href="#" className="hover:text-blue-400 transition">Buses</a>
+            <a href="#" className="hover:text-blue-400 transition">Rail</a>
+          </nav>
+
+          {/* Right Actions & Blinking Book Now */}
+          <div className="flex items-center space-x-4">
+            <select className="bg-slate-800 border border-slate-700 text-xs rounded px-2 py-1 text-slate-300 focus:outline-none">
+              <option>English (EN)</option>
+              <option>Urdu (UR)</option>
+            </select>
+            <select className="bg-slate-800 border border-slate-700 text-xs rounded px-2 py-1 text-slate-300 focus:outline-none">
+              <option>USD ($)</option>
+              <option>EUR (€)</option>
+              <option>PKR (Rs)</option>
+            </select>
+            <a href="#auth" className="hidden sm:inline text-sm hover:text-blue-400">Sign In</a>
+           
+            {/* Blinking Book Now Button */}
+            <a href="#search-section" className="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-blue-600 rounded-full shadow-lg overflow-hidden group animate-pulse hover:bg-blue-500 transition">
+              <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+              Book Now
+            </a>
           </div>
+
         </div>
       </header>
 
-      {/* Main Layout with Sidebar */}
-      <div className="flex-1 flex flex-col md:flex-row max-w-7xl w-full mx-auto p-4 md:p-6 gap-6">
+      {/* MAIN CONTAINER (Layout with Sidebar & Content) */}
+      <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
        
-        {/* Sidebar: Affiliate & White-label Options */}
-        <aside className="w-full md:w-80 bg-slate-900/70 border border-slate-800/80 rounded-3xl p-6 backdrop-blur-xl space-y-6 h-fit">
-          <div>
-            <h3 className="text-xs font-black text-cyan-400 uppercase tracking-widest mb-3">Partner Control Panel</h3>
-            <ul className="space-y-2 text-sm text-slate-300">
-              <li><a href="#affiliate" className="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-xl transition font-medium">🤝 Affiliate Program Dashboard</a></li>
-              <li><a href="#whitelabel" className="block p-3 hover:bg-slate-800/50 rounded-xl transition font-medium">🏷️ White-label Custom Domain</a></li>
-              <li><a href="#wallet" className="block p-3 hover:bg-slate-800/50 rounded-xl transition font-medium">💳 Income & Payout Methods</a></li>
-              <li><a href="#region" className="block p-3 hover:bg-slate-800/50 rounded-xl transition font-medium">🌍 Region & Currency Settings</a></li>
+        {/* 2. ADVANCED SIDEBAR DASHBOARD */}
+        <aside className="lg:col-span-1 space-y-6">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+            <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-4">Partner Control Panel</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
+              <li><a href="#dashboard" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800 transition">📊 <span>Dashboard</span></a></li>
+              <li><a href="#performance" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800 transition">📈 <span>Performance</span></a></li>
+              <li><a href="#bookings" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800 transition">✈️ <span>Bookings & Ledger</span></a></li>
+              <li><a href="#finance" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800 transition">💳 <span>Finance & Payouts</span></a></li>
+              <li><a href="#referral" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800 transition">🤝 <span>Referral Program</span></a></li>
+              <li><a href="#blog" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800 transition">📰 <span>Blog & Guides</span></a></li>
+              <li><a href="#help" className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800 transition text-amber-400">❓ <span>Help Center</span></a></li>
             </ul>
           </div>
 
-          <div className="bg-gradient-to-br from-cyan-950/40 to-blue-950/40 border border-cyan-500/20 p-4 rounded-2xl">
-            <h4 className="text-xs font-bold text-cyan-400 uppercase">Live Commission Balance</h4>
-            <div className="text-2xl font-black text-white mt-1">$4,850.00 <span className="text-xs font-normal text-slate-400">USD</span></div>
-            <p className="text-[11px] text-slate-400 mt-2">Instant withdrawal enabled via Bank, Crypto & Wise.</p>
+          {/* Live Balance Card */}
+          <div className="bg-gradient-to-br from-blue-900/40 to-slate-900 border border-blue-800/50 rounded-2xl p-5">
+            <span className="text-xs text-blue-300 uppercase font-semibold">Live Commission Balance</span>
+            <div className="text-2xl font-bold mt-1 text-white">$4,850.00 <span className="text-xs font-normal text-slate-400">USD</span></div>
+            <p className="text-xs text-slate-400 mt-2">Instant withdrawal enabled via Bank, Crypto & Wise.</p>
           </div>
         </aside>
 
-        {/* Center Content Area */}
-        <main className="flex-1 space-y-8">
+        {/* MAIN CONTENT AREA */}
+        <main className="lg:col-span-3 space-y-10">
          
-          {/* Motivational Hero Banner with World Aesthetic Image */}
-          <section id="search" className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 p-8 md:p-12 border border-slate-800 shadow-2xl">
-            <div className="absolute inset-0 opacity-25 bg-[url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
-            <div className="relative z-10 max-w-2xl space-y-4">
-              <span className="bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
-                Explore The Globe Without Limits
+          {/* 3. HERO BANNER */}
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 p-8 md:p-12 border border-slate-800 shadow-2xl">
+            <div className="relative z-10 max-w-xl space-y-4">
+              <span className="bg-blue-500/20 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-500/30">
+                100% Direct Wholesale Pricing
               </span>
-              <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                &quot;The world is a book, and those who do not travel read only one page.&quot;
+              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+                "The world is a book, and those who do not travel read only one page."
               </h1>
-              <p className="text-slate-300 text-sm md:text-base">
-                Book wholesale flights and live hotel rooms worldwide with real-time API pricing.
+              <p className="text-slate-300 text-sm">
+                Book wholesale flights and live hotel rooms worldwide with direct-to-server API pricing and zero third-party cuts.
               </p>
-            </div>
-
-            {/* Flight & Hotel Search Box */}
-            <div className="relative z-10 mt-8 bg-slate-900/95 border border-slate-800 p-6 rounded-2xl backdrop-blur-xl shadow-xl space-y-4">
-              <div className="flex space-x-4 border-b border-slate-800 pb-3">
-                <button
-                  onClick={() => setActiveTab('flights')}
-                  className={`text-sm font-bold pb-1 transition ${activeTab === 'flights' ? 'text-cyan-400 border-b-2 border-cyan-400' : 'text-slate-400'}`}
-                >
-                  ✈️ Flights Search
-                </button>
-                <button
-                  onClick={() => setActiveTab('hotels')}
-                  className={`text-sm font-bold pb-1 transition ${activeTab === 'hotels' ? 'text-cyan-400 border-b-2 border-cyan-400' : 'text-slate-400'}`}
-                >
-                  🏨 Live Hotels & Rooms
-                </button>
+             
+              {/* Quick Search Widget */}
+              <div id="search-section" className="bg-slate-950/80 backdrop-blur p-4 rounded-2xl border border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                <div>
+                  <label className="block text-xs text-slate-400 mb-1">From (Origin)</label>
+                  <input type="text" placeholder="LHE / ISB" className="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white focus:outline-none" />
+                </div>
+                <div>
+                  <label className="block text-xs text-slate-400 mb-1">To (Destination)</label>
+                  <input type="text" placeholder="DXB / IST" className="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white focus:outline-none" />
+                </div>
+                <div className="flex items-end">
+                  <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm py-2 rounded transition">
+                    Search Fares
+                  </button>
+                </div>
               </div>
+            </div>
+          </div>
 
-              {activeTab === 'flights' ? (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1">From (Origin)</label>
-                    <input type="text" value={from} onChange={(e)=>setFrom(e.target.value)} className="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl text-sm text-white font-mono uppercase outline-none focus:border-cyan-500" />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1">To (Destination)</label>
-                    <input type="text" value={to} onChange={(e)=>setTo(e.target.value)} className="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl text-sm text-white font-mono uppercase outline-none focus:border-cyan-500" />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1">Date</label>
-                    <input type="date" defaultValue="2026-10-15" className="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl text-sm text-white outline-none focus:border-cyan-500" />
+          {/* 4. DYNAMIC REGION / COUNTRY / CITY FILTER BARS */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+            <h3 className="text-lg font-bold text-white">🌍 Dynamic Location & Property Filters</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">Select Region</label>
+                <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)} className="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white">
+                  <option value="Asia">Asia & Middle East</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Americas">Americas</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">Select Country</label>
+                <select value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)} className="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white">
+                  <option value="UAE">United Arab Emirates</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">Select City / Airport</label>
+                <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} className="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white">
+                  <option value="Dubai">Dubai (DXB)</option>
+                  <option value="Abu Dhabi">Abu Dhabi (AUH)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* 5. BROWSE BY PROPERTY TYPE */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-white">Browse by Property Type</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {['Hotels', 'Apartments', 'Resorts', 'Villas'].map((type, idx) => (
+                <div key={idx} className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500 transition cursor-pointer p-4 text-center">
+                  <div className="w-full h-24 bg-slate-800 rounded-xl mb-3 flex items-center justify-center text-2xl">🏨</div>
+                  <h4 className="font-semibold text-white">{type}</h4>
+                  <p className="text-xs text-slate-400 mt-1">High-res bed/room views</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 6. TRENDING DESTINATIONS */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-white">Trending Destinations ({selectedCity}, {selectedCountry})</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {['Downtown Skyline', 'Marina Beach', 'Palm Island'].map((dest, idx) => (
+                <div key={idx} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+                  <div className="h-36 bg-slate-800 flex items-center justify-center text-slate-500">Destination Image</div>
+                  <div className="p-4">
+                    <h5 className="font-bold text-white">{dest}</h5>
+                    <p className="text-xs text-slate-400 mt-1">Direct wholesale contracted rates</p>
                   </div>
                 </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="md:col-span-2">
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1">City or Hotel Name</label>
-                    <input type="text" defaultValue="Dubai Marina, UAE" className="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl text-sm text-white outline-none focus:border-cyan-500" />
+              ))}
+            </div>
+          </div>
+
+          {/* 7. QUICK TRIP PLANNER */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4">Quick & Easy Trip Planner</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+              {['Food & Cooking', 'Photography', 'Festival & Events', 'Historical', 'Shopping'].map((item, idx) => (
+                <button key={idx} className="bg-slate-800 hover:bg-blue-600/20 border border-slate-700 hover:border-blue-500 text-xs text-slate-200 p-3 rounded-xl transition text-center font-medium">
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* 8. UNIQUE PROPERTIES & WEEKEND DEALS */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-white">Stay at Top Unique Properties & Weekend Deals</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+                <div>
+                  <div className="flex justify-between items-start">
+                    <span className="bg-amber-500/20 text-amber-400 text-xs px-2.5 py-1 rounded-full font-bold">★ 4.9 Rating</span>
+                    <span className="bg-rose-500/20 text-rose-400 text-xs px-2.5 py-1 rounded-full font-bold">25% OFF</span>
                   </div>
-                  <div>
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1">Check-in / Out</label>
-                    <input type="date" defaultValue="2026-10-20" className="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl text-sm text-white outline-none focus:border-cyan-500" />
-                  </div>
+                  <h4 className="font-bold text-lg text-white mt-3">Aetros Luxury Suite & Spa</h4>
+                  <p className="text-xs text-slate-400 mt-1">Starting from $120 / night (Wholesale Direct)</p>
                 </div>
-              )}
-
-              <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl transition shadow-lg text-sm uppercase tracking-wider">
-                Search Live {activeTab === 'flights' ? 'Wholesale Fares' : 'Hotel Rooms'}
-              </button>
-            </div>
-          </section>
-
-          {/* Region & Currency Settings Section */}
-          <section id="region" className="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-4">
-            <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider">🌍 Region & Currency Settings</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs text-slate-400 mb-1">Select Target Region / Market</label>
-                <select className="w-full bg-slate-800 border border-slate-700 text-white p-3 rounded-xl text-sm outline-none">
-                  <option>Middle East (GCC - English / Arabic)</option>
-                  <option>South Asia (Pakistan / India - PKR / INR)</option>
-                  <option>Europe & UK (GBP / EUR)</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs text-slate-400 mb-1">Display Currency</label>
-                <select className="w-full bg-slate-800 border border-slate-700 text-white p-3 rounded-xl text-sm outline-none">
-                  <option>USD ($)</option>
-                  <option>PKR (Rs)</option>
-                  <option>AED (Dh)</option>
-                </select>
-              </div>
-            </div>
-          </section>
-
-          {/* Partner Income & Easy Withdrawal Section */}
-          <section id="wallet" className="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-6">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <div>
-                <h3 className="text-lg font-bold text-white">Partner Income & Withdrawal</h3>
-                <p className="text-xs text-slate-400 mt-1">Partners can easily withdraw their affiliate & whitelabel earnings anytime.</p>
-              </div>
-              <div className="bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-xl text-right">
-                <span className="block text-[10px] text-emerald-400 font-bold uppercase">Ready to Withdraw</span>
-                <span className="text-xl font-black text-emerald-400">$4,850.00 USD</span>
-              </div>
-            </div>
-
-            {withdrawSuccess && (
-              <div className="bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 p-4 rounded-xl text-sm font-semibold">
-                ✅ Withdrawal request submitted successfully! Funds will be transferred to your selected payout method shortly.
-              </div>
-            )}
-
-            <form onSubmit={handleWithdraw} className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Withdrawal Amount ($)</label>
-                <input
-                  type="number"
-                  placeholder="Enter amount"
-                  value={withdrawAmount}
-                  onChange={(e) => setWithdrawAmount(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl text-sm text-white outline-none focus:border-cyan-500"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Payment Method</label>
-                <select className="w-full bg-slate-800 border border-slate-700 text-white p-3 rounded-xl text-sm outline-none">
-                  <option>Direct Bank Transfer (IBAN / Wire)</option>
-                  <option>Wise / Payoneer Account</option>
-                  <option>Crypto (USDT / Bitcoin)</option>
-                </select>
-              </div>
-              <div className="flex items-end">
-                <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider shadow-lg">
-                  Withdraw Funds Now
+                <button className="mt-4 w-full bg-slate-800 hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded-lg transition">
+                  Check Availability
                 </button>
               </div>
-            </form>
-          </section>
+
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+                <div>
+                  <div className="flex justify-between items-start">
+                    <span className="bg-amber-500/20 text-amber-400 text-xs px-2.5 py-1 rounded-full font-bold">★ 4.8 Rating</span>
+                    <span className="bg-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded-full font-bold">Weekend Special</span>
+                  </div>
+                  <h4 className="font-bold text-lg text-white mt-3">PulseTrips Desert Resort</h4>
+                  <p className="text-xs text-slate-400 mt-1">Starting from $95 / night + Free Breakfast</p>
+                </div>
+                <button className="mt-4 w-full bg-slate-800 hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded-lg transition">
+                  Check Availability
+                </button>
+              </div>
+            </div>
+          </div>
 
         </main>
       </div>
 
-      {/* Footer with Policies */}
-      <footer className="bg-slate-900 border-t border-slate-800 mt-12 py-10 px-6 text-slate-400 text-xs">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      {/* 9. FOOTER SECTION (5-7 Options & Copyright) */}
+      <footer className="border-t border-slate-800 bg-slate-900 mt-16 py-12">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
           <div>
-            <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-sm">Aetros PulseTrips</h4>
-            <p className="text-slate-400">The ultimate B2B wholesale flight and hotel booking platform powered by advanced API networks.</p>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-sm">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#search" className="hover:text-cyan-400">Flight Search Engine</a></li>
-              <li><a href="#affiliate" className="hover:text-cyan-400">Affiliate Program</a></li>
-              <li><a href="#whitelabel" className="hover:text-cyan-400">White-label Solutions</a></li>
+            <h5 className="font-bold text-white mb-3">Discover</h5>
+            <ul className="space-y-2 text-slate-400 text-xs">
+              <li><a href="#" className="hover:text-blue-400">Flights API</a></li>
+              <li><a href="#" className="hover:text-blue-400">Hotel Beds</a></li>
+              <li><a href="#" className="hover:text-blue-400">Trending Cities</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-sm">Legal & Policies</h4>
-            <ul className="space-y-2">
-              <li><span className="hover:text-cyan-400 cursor-pointer">Terms & Conditions</span></li>
-              <li><span className="hover:text-cyan-400 cursor-pointer">Privacy Policy</span></li>
-              <li><span className="hover:text-cyan-400 cursor-pointer">Refund & Payout Policy</span></li>
+            <h5 className="font-bold text-white mb-3">Support</h5>
+            <ul className="space-y-2 text-slate-400 text-xs">
+              <li><a href="#" className="hover:text-blue-400">Help Center</a></li>
+              <li><a href="#" className="hover:text-blue-400">API Documentation</a></li>
+              <li><a href="#" className="hover:text-blue-400">Withdrawal FAQ</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-3 uppercase tracking-wider text-sm">Support</h4>
-            <p>Email: support@pulsetrips.com</p>
-            <p className="mt-1">24/7 B2B Agent Assistance</p>
+            <h5 className="font-bold text-white mb-3">Partners</h5>
+            <ul className="space-y-2 text-slate-400 text-xs">
+              <li><a href="#" className="hover:text-blue-400">Affiliate Portal</a></li>
+              <li><a href="#" className="hover:text-blue-400">Direct Commission</a></li>
+              <li><a href="#" className="hover:text-blue-400">White-label Domain</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="font-bold text-white mb-3">Terms & Settings</h5>
+            <ul className="space-y-2 text-slate-400 text-xs">
+              <li><a href="#" className="hover:text-blue-400">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-blue-400">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-blue-400">Security & Ledger</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="font-bold text-white mb-3">About Aetros</h5>
+            <ul className="space-y-2 text-slate-400 text-xs">
+              <li><a href="#" className="hover:text-blue-400">Our Story</a></li>
+              <li><a href="#" className="hover:text-blue-400">Global Network</a></li>
+              <li><a href="#" className="hover:text-blue-400">Contact Us</a></li>
+            </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto border-t border-slate-800 pt-6 text-center">
-          <p>&copy; 2026 Aetros PulseTrips. All rights reserved. Built for professional travel partners.</p>
+
+        {/* Copyright & Monogram */}
+        <div className="max-w-7xl mx-auto px-4 mt-10 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+          <div className="flex items-center space-x-2">
+            <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center font-bold text-white text-xs">AP</div>
+            <span>© 2026 Aetros PulseTrips. All rights reserved. Direct B2B Wholesale Portal.</span>
+          </div>
+          <div className="mt-4 sm:mt-0 flex space-x-4">
+            <a href="#" className="hover:text-slate-400">Privacy</a>
+            <a href="#" className="hover:text-slate-400">Terms</a>
+            <a href="#" className="hover:text-slate-400">API Status: Online</a>
+          </div>
         </div>
       </footer>
 
