@@ -1,76 +1,83 @@
-export default function Navbar() {
+'use client';
+import { useState } from 'react';
+import { Globe, DollarSign } from 'lucide-react';
+
+export default function Header() {
   return (
-    <header className="w-full bg-[#0b1329] text-white shadow-md">
-      {/* Top Blinking Announcement Bar */}
-      <div className="bg-amber-500 text-black text-xs sm:text-sm font-bold py-1 text-center animate-pulse">
-        ⭐ [Limited Deal: Save up to 40% on Flights, eSIMs & Tour Tickets Worldwide!] ⭐
+    <header className="w-0.5-full bg-[#070d1d] border-b border-slate-800 text-white flex flex-col w-full">
+      {/* 1. Topmost Center Blinking Deal Banner */}
+      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-center py-1.5 px-4 text-xs font-bold tracking-wide animate-pulse">
+        🔥 Limited Deal: Save up to 40% on Flights, eSIMs & Tour Tickets Worldwide!
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-3">
-        {/* Upper Row: Logo, Currency, Language, Signup/Signin */}
-        <div className="flex items-center justify-between">
-          {/* Logo & Brand */}
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
-              AP
-            </div>
-            <div>
-              <h1 className="font-extrabold text-base tracking-wider text-cyan-400">AETROS PULSETRIPS</h1>
-              <p className="text-[10px] text-gray-300">B2B GLOBAL TRAVEL NETWORK</p>
-            </div>
+      {/* 2. Utility Bar above Book Now: Currency, Language, Signin, Signup */}
+      <div className="flex justify-end items-center gap-3 px-6 py-1.5 bg-[#050914] border-b border-slate-800/60 text-xs">
+        <div className="flex items-center gap-1 text-gray-300 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">
+          <DollarSign size={12} className="text-cyan-400" />
+          <select className="bg-transparent text-white outline-none cursor-pointer text-xs">
+            <option value="USD" className="bg-slate-900">USD</option>
+            <option value="EUR" className="bg-slate-900">EUR</option>
+            <option value="GBP" className="bg-slate-900">GBP</option>
+          </select>
+        </div>
+
+        <div className="flex items-center gap-1 text-gray-300 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">
+          <Globe size={12} className="text-cyan-400" />
+          <select className="bg-transparent text-white outline-none cursor-pointer text-xs">
+            <option value="English" className="bg-slate-900">English</option>
+            <option value="Urdu" className="bg-slate-900">Urdu</option>
+            <option value="French" className="bg-slate-900">French</option>
+          </select>
+        </div>
+
+        <button className="text-gray-300 hover:text-white px-2 py-0.5 font-semibold transition">
+          Sign In
+        </button>
+        <button className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold px-3 py-1 rounded transition shadow">
+          Register / Signup
+        </button>
+      </div>
+
+      {/* 3. Main Header Section */}
+      <div className="flex items-center justify-between px-6 py-3">
+        {/* Left Side: Logo & Brand Name */}
+        <div className="flex items-center gap-2.5">
+          <div className="bg-blue-600 text-white font-black p-2 rounded-lg text-sm tracking-wider shadow-md">
+            AP
           </div>
-
-          {/* Right Section: Signup/Signin shifted left with Currency & Language */}
-          <div className="flex items-center gap-4 text-xs">
-            <div className="flex items-center gap-1 bg-slate-800 px-2 py-1 rounded border border-slate-700">
-              <span className="text-gray-400 text-[11px]">Currency:</span>
-              <select className="bg-transparent text-white focus:outline-none cursor-pointer">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-              </select>
-            </div>
-
-            <div className="flex items-center gap-1 bg-slate-800 px-2 py-1 rounded border border-slate-700">
-              <span className="text-gray-400 text-[11px]">Lang:</span>
-              <select className="bg-transparent text-white focus:outline-none cursor-pointer">
-                <option value="en">English</option>
-              </select>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md font-semibold shadow transition">
-                Signup
-              </button>
-              <button className="px-4 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded-md font-semibold shadow transition">
-                Signin
-              </button>
-            </div>
+          <div className="flex flex-col">
+            <span className="font-extrabold tracking-tight text-white text-base">AETROS PULSETRIPS</span>
+            <span className="text-[10px] text-cyan-400 tracking-wider">B2B GLOBAL TRAVEL NETWORK</span>
           </div>
         </div>
 
-        {/* Middle Row: Navigation Links in Boxes (Balanced Size) */}
-        <nav className="flex flex-wrap items-center justify-center gap-2 py-1">
-          {['HOME', 'FLIGHTS', 'STAYS', 'HOTELS', 'AIRPORT TAXI', 'CAR RENTAL', 'RAIL', 'BUSES'].map((item) => (
+        {/* Center Navigation: Larger, Bold, inside Boxes */}
+        <nav className="hidden xl:flex items-center gap-2">
+          {[
+            'Home',
+            'Flights',
+            'Stays',
+            'Hotels',
+            'Airport Taxi',
+            'Car Rental',
+            'Rail',
+            'Buses'
+          ].map((item) => (
             <a
               key={item}
               href="#"
-              className="px-3.5 py-1.5 bg-slate-800/80 hover:bg-blue-600 border border-slate-700 rounded-lg text-xs font-bold tracking-wide transition shadow-sm"
+              className="px-3.5 py-2 rounded-lg bg-slate-900/90 border border-slate-800 text-sm font-bold text-gray-100 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition shadow"
             >
               {item}
             </a>
           ))}
-
-          {/* Blinking Book Now Button */}
-          <button className="px-4 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-extrabold animate-bounce shadow-lg">
-            BOOK NOW
-          </button>
         </nav>
 
-        {/* Motivational Subtext in Center */}
-        <div className="text-center pb-1">
-          <p className="text-xs italic text-cyan-300 font-medium tracking-wide">
-            ✨ "Discover the world your way – where every journey turns into an unforgettable adventure." ✨
-          </p>
+        {/* Right Side: Blinking Book Now Button */}
+        <div>
+          <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-extrabold px-5 py-2.5 rounded-xl shadow-lg animate-pulse hover:scale-105 transition">
+            BOOK NOW 🚀
+          </button>
         </div>
       </div>
     </header>
