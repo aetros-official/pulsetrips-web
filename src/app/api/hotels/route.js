@@ -1,28 +1,22 @@
-import { NextResponse } from 'main/server'; // or 'next/server'
 import { NextResponse } from 'next/server';
 
 export async function GET(request) {
   try {
-    // Using your exact Vercel/GitHub secret variable names for Hotelbeds
+    // Retrieves the Hotelbeds API credentials securely from Vercel / GitHub environment variables
     const apiKey = process.env.HOTELBEDS_API_KEY;
     const apiSecret = process.env.HOTELBEDS_SECRET;
 
+    // Extracting query parameters sent from the frontend
     const { searchParams } = new URL(request.url);
     const city = searchParams.get('city') || 'Paris';
     const checkIn = searchParams.get('checkIn') || '2026-10-05';
     const checkOut = searchParams.get('checkOut') || '2026-10-10';
 
     /*
-    // Hotelbeds API requires specific signature/headers authentication, which is handled securely here:
-    // const apiResponse = await fetch(`https://api.hotelbeds.com/...`, {
-    //   headers: {
-    //     'Api-key': apiKey,
-    //     'X-Signature': generatedSignature, // computed securely on server
-    //     'Accept': 'application/json'
-    //   }
-    // });
+    // Uncomment and integrate your Hotelbeds live fetch code here when ready
     */
 
+    // Sample response to verify server-side hotel route connectivity
     return NextResponse.json({
       success: true,
       message: "Hotelbeds inventory connected via server-side route!",
@@ -33,6 +27,9 @@ export async function GET(request) {
     });
 
   } catch (error) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error.message || 'Internal Server Error' },
+      { status: 500 }
+    );
   }
 }
