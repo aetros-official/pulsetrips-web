@@ -11,7 +11,7 @@ export async function GET(request) {
     const date = searchParams.get('date') || '2026-10-01';
 
     /*
-    // Example fetch block for Duffel API using your access token:
+    // Example fetch block for Duffel API using your access token: duffel_test_AYzyVnlGTUgUOmGuBv9zZs5UB3rqd4ujA4b3OGQTL-O
     const apiResponse = await fetch(`https://api.duffel.com/air/slice_offers?...`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
