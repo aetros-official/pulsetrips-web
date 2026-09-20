@@ -1,83 +1,51 @@
 'use client';
 import { useState } from 'react';
-import { Globe, DollarSign } from 'lucide-react';
+import { Plane, Hotel, Globe, Bell, User, ChevronDown } from 'lucide-react';
 
 export default function Header() {
   return (
-    <header className="w-full bg-[#070d1d] border-b border-slate-800 text-white flex flex-col">
-      {/* 1. Sub se top center mein blinking deal banner */}
-      <div className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-center py-2 px-4 text-xs font-extrabold tracking-wide animate-pulse">
-        🔥 Limited Deal: Save up to 40% on Flights, eSIMs & Tour Tickets Worldwide!
+    <header className="bg-[#070d1d] border-b border-slate-800 sticky top-0 z-50">
+      {/* Top Banner */}
+      <div className="bg-gradient-to-r from-blue-600 via-cyan-600 to-indigo-600 text-[11px] font-bold text-center py-1.5 px-4 text-white tracking-wide shadow-inner flex items-center justify-center gap-2">
+        <span className="bg-white/20 px-2 py-0.5 rounded text-white animate-pulse">FLASH DEAL</span>
+        <span>Get up to 40% wholesale commission on European flight & hotel packages this week!</span>
       </div>
 
-      {/* 2. Book now ke oper wali line mein currency, language, signup, signin */}
-      <div className="flex justify-end items-center gap-3 px-6 py-2 bg-[#050914] border-b border-slate-800/60 text-xs">
-        <div className="flex items-center gap-1 text-gray-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">
-          <DollarSign size={13} className="text-cyan-400" />
-          <select className="bg-transparent text-white outline-none cursor-pointer text-xs font-semibold">
-            <option value="USD" className="bg-slate-900">USD</option>
-            <option value="EUR" className="bg-slate-900">EUR</option>
-            <option value="GBP" className="bg-slate-900">GBP</option>
-          </select>
+      {/* Main Nav */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-slate-950 text-lg shadow-lg">
+              P
+            </div>
+            <span className="text-lg font-black tracking-wider bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent">
+              PULSETRIPS
+            </span>
+          </div>
+
+          <nav className="hidden md:flex items-center gap-6 text-xs font-bold text-slate-300">
+            <a href="#" className="hover:text-cyan-400 transition">Dashboard</a>
+            <a href="#" className="hover:text-cyan-400 transition">Flights (Duffel)</a>
+            <a href="#" className="hover:text-cyan-400 transition">Hotels (Hotelbeds)</a>
+            <a href="#" className="hover:text-cyan-400 transition">Affiliate Links</a>
+          </nav>
         </div>
 
-        <div className="flex items-center gap-1 text-gray-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">
-          <Globe size={13} className="text-cyan-400" />
-          <select className="bg-transparent text-white outline-none cursor-pointer text-xs font-semibold">
-            <option value="English" className="bg-slate-900">English</option>
-            <option value="Urdu" className="bg-slate-900">Urdu</option>
-            <option value="French" className="bg-slate-900">French</option>
-          </select>
-        </div>
-
-        <button className="text-gray-300 hover:text-white px-2.5 py-1 font-semibold transition">
-          Sign In
-        </button>
-        <button className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold px-3 py-1.5 rounded transition shadow">
-          Register / Signup
-        </button>
-      </div>
-
-      {/* 3. Main Header Section */}
-      <div className="flex items-center justify-between px-6 py-4">
-        {/* Left Side: Logo & Brand Name */}
         <div className="flex items-center gap-3">
-          <div className="bg-blue-600 text-white font-black p-2.5 rounded-xl text-sm tracking-wider shadow-md">
-            AP
+          <div className="hidden sm:flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300">
+            <Globe size={14} className="text-cyan-400" />
+            <span>USD / EN</span>
           </div>
-          <div className="flex flex-col">
-            <span className="font-black tracking-tight text-white text-base">AETROS PULSETRIPS</span>
-            <span className="text-[10px] text-cyan-400 tracking-wider font-semibold">B2B GLOBAL TRAVEL NETWORK</span>
-          </div>
-        </div>
-
-        {/* Center Navigation: Bade, Bold aur Boxed */}
-        <nav className="hidden xl:flex items-center gap-2.5">
-          {[
-            'Home',
-            'Flights',
-            'Stay',
-            'Hotels',
-            'Airport Taxi',
-            'Car Rental',
-            'Rail',
-            'Buses'
-          ].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="px-4 py-2 rounded-xl bg-slate-900/90 border border-slate-700 text-sm font-extrabold text-gray-100 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition shadow-md"
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
-
-        {/* Right Side: Blinking Book Now Button */}
-        <div>
-          <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-black px-6 py-3 rounded-xl shadow-lg animate-pulse hover:scale-105 transition text-sm">
-            BOOK NOW 🚀
+          <button className="relative bg-slate-900 hover:bg-slate-800 border border-slate-800 p-2 rounded-xl text-slate-300 transition">
+            <Bell size={16} />
+            <span className="absolute top-1 right-1 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></span>
           </button>
+          <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs font-bold text-white">
+            <div className="w-6 h-6 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+              <User size={14} />
+            </div>
+            <span>Aetros Admin</span>
+          </div>
         </div>
       </div>
     </header>
